@@ -1,4 +1,5 @@
-Django
+# Added Python Django to the requirements
+Django==4.2.3
 djangorestframework
 djongo
 pymongo
