@@ -1,33 +1,27 @@
+import sys
+import os
 from pymongo import MongoClient
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../')))
+from octofit_tracker.test_data import test_data
 
 # Connect to MongoDB directly without relying on Django
 client = MongoClient('mongodb://localhost:27017')
 db = client['octofit_db']
 
 # Populate users collection
-db.users.insert_many([
-    {"email": "john.doe@example.com", "name": "John Doe", "password": "password123"},
-    {"email": "jane.smith@example.com", "name": "Jane Smith", "password": "password123"},
-    {"email": "alice.wonderland@example.com", "name": "Alice Wonderland", "password": "password123"},
-    {"email": "bob.builder@example.com", "name": "Bob Builder", "password": "password123"}
-])
+db.users.insert_many(test_data['users'])
 
 # Populate teams collection
-db.teams.insert_one({"name": "Team Alpha", "members": ["john.doe@example.com", "jane.smith@example.com"]})
+db.teams.insert_many(test_data['teams'])
 
-# Populate activity collection
-db.activity.insert_many([
-    {"user": "john.doe@example.com", "activity": "Running", "duration": 30},
-    {"user": "jane.smith@example.com", "activity": "Cycling", "duration": 45}
-])
+# Populate activities collection
+db.activity.insert_many(test_data['activities'])
 
 # Populate leaderboard collection
-db.leaderboard.insert_one({"team": "Team Alpha", "score": 100})
+db.leaderboard.insert_many(test_data['leaderboard'])
 
 # Populate workouts collection
-db.workouts.insert_many([
-    {"name": "Morning Run", "type": "Cardio", "duration": 30},
-    {"name": "Evening Yoga", "type": "Flexibility", "duration": 60}
-])
+db.workouts.insert_many(test_data['workouts'])
 
 print('Test data added successfully')
