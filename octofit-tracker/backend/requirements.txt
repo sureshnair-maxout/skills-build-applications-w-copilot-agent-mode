@@ -1,5 +1,6 @@
 # Requirements for OctoFit Tracker Backend
-Django==4.2.3
+Django==4.1
+# Updated to version 4.1
 djangorestframework==3.16.0
 djongo==1.2.31
 pymongo==4.12.0
