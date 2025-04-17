@@ -1,4 +1,4 @@
-# Updated requirements for OctoFit Tracker
+# Requirements for OctoFit Tracker Backend
 Django==4.2.3
 djangorestframework==3.16.0
 djongo==1.2.31
